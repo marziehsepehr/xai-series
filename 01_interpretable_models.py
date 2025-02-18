@@ -54,6 +54,11 @@ print(f"Accuracy {accuracy_score(y_test, y_pred)}")
 tree_local = tree.explain_local(X_test[:100], y_test[:100], name='Tree')
 show(tree_local)
 
+# %% Explain Global prediction
+tree_global = tree.explain_global( name='Classification Tree')
+show(tree_global)
+
+
 # %% Fit Explainable Boosting Machine
 ebm = ExplainableBoostingClassifier(random_state=2021)
 ebm.fit(X_train, y_train) 
