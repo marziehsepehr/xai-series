@@ -20,6 +20,10 @@ print(X_test.shape)
 X_train, y_train = data_loader.oversample(X_train, y_train)
 print("After oversampling:", X_train.shape)
 
+# %% Convert boolean to int
+X_train = X_train.replace({True: 1, False: 0})
+X_test = X_test.replace({True: 1, False: 0})
+
 # %% Fit logistic regression model
 lr = LogisticRegression(random_state=2021, feature_names=X_train.columns, penalty='l1', solver='liblinear')
 lr.fit(X_train, y_train)
